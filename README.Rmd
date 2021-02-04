@@ -23,8 +23,8 @@ To extract only the faculty information we want (name, position, department, deg
 # html_nodes() finds all nodes that match the tag (in our case, "p") and puts each of those elements in a list
 faculty_nodes = faculty_page %>% html_nodes("p")
 
-# Now we have a list of each faculty members information in a list (each row is a new person)
-# However, <br> is separating the name from the position and so on, so we use xml_find_all and xml_add_sibling to find all breaks and replace them with ";" for easier separation later
+# Now we have a list of each faculty members' information (each row is a new person)
+# However, there is a <br> between each piece of information for each person, so xml_find_all and xml_add_sibling finds these and replaces them with ";" for easier separation later
 xml_find_all(faculty_nodes, ".//br") %>% xml_add_sibling("p", ";")
 
 # Now we use html_text() to get the raw text of faculty information (now separated by semicolons), and remove non-faculty information (first two rows and last row)
