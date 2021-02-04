@@ -2,6 +2,9 @@ Statistics 433: Faculty Table
 ================
 Marissa Schladweiler
 
+Link to my GitHub Repo:
+<https://github.com/marissa-schlads/Faculty_Homework>
+
 ``` r
 # The UW-Madison Faculty information used for this project can be found at the URL below
 # The rvest R package allows you to easily scrape data from webpages (similar to BeautifulSoup in Python)
