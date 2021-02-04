@@ -23,8 +23,7 @@ that each new person was encoded in paragraph nodes represented by
 faculty_nodes = faculty_page %>% html_nodes("p")
 
 # Now we have a list of each faculty members information in a list (each row is a new person)
-# However, <br> is separating the name from the position and so on, so we use xml_find_all and xml_add_sibling to find all breaks and replace them with ";" for easier 
-# separation later
+# However, <br> is separating the name from the position and so on, so we use xml_find_all and xml_add_sibling to find all breaks and replace them with ";" for easier separation later
 xml_find_all(faculty_nodes, ".//br") %>% xml_add_sibling("p", ";")
 
 # Now we use html_text() to get the raw text of faculty information (now separated by semicolons), and remove non-faculty information (first two rows and last row)
@@ -32,7 +31,8 @@ faculty_nodes = html_text(faculty_nodes)[c(-1, -2, -3991)]
 ```
 
 ``` r
-# This loops through each person in the list, extracts their name, position, department, and degree info and binds them to data frame where each person is a new row
+# This loops through each person in the list, extracts their name, position, department, and degree info and 
+# binds them to data frame where each person is a new row
 library(stringr)
 faculty_data = data.frame()
 for(i in 1:length(faculty_nodes)){
